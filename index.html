@@ -38,12 +38,13 @@
                     <legend>Age details</legend>
                     <label>
                         <span>Policy issued at age</span>
-                        <input type=number id=issue-age required value=25>
+                        <input type=number id=issue-age required value=25
+                                min=0>
                     </label>
                     <label>
                         <span>Years since policy issue (leave blank if not
                             considering select period)</span>
-                        <input type=number id=select-period>
+                        <input type=number id=select-period min=0>
                     </label>
                 </fieldset>
 
@@ -61,7 +62,7 @@
 
                 <label>
                     Term (leave blank if not temporary)
-                    <input type=number id=term-input value=30>
+                    <input type=number id=term-input value=30 min=0>
                 </label>
 
                 <fieldset>
@@ -88,7 +89,7 @@
 
                 <label>
                     Deferred for
-                    <input type=number id=defer-input value=1>
+                    <input type=number id=defer-input required value=0 min=0>
                 </label>
 
                 <input type=submit value="Describe Policy">
