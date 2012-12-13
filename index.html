@@ -105,10 +105,16 @@
     </div>
 
     <script type=text/x-template id=policy-desc-template>
-        An
+        The Expected Present Value (EPV) of
+        <%= term ? 'a term' : 'an' %>
         <% if (isEndowment) { %> endowment <% } %>
         <% if (isAssurance) { %> assurance <% } %>
-        policy issued at age <%= issueAge %>.
+        policy issued to an individual at age
+        <%= issueAge %><%
+        if (!isNaN(selectPeriod)) { %>,
+            whose present age is <%= selectPeriod == 0 ? 'also' : '' %>
+            <%= issueAge + selectPeriod %> years
+        <% } %> is,
     </script>
 
     <script type=text/x-mathjax-config>

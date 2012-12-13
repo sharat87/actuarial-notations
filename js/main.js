@@ -60,7 +60,10 @@ jQuery(function ($) {
         if (isNaN(policy.selectPeriod)) {
             subscript = policy.issueAge;
         } else {
-            subscript = '[' + policy.issueAge + ']+' + policy.selectPeriod;
+            subscript = '[' + policy.issueAge + ']';
+            if (policy.selectPeriod != 0) {
+                subscript += '+' + policy.selectPeriod;
+            }
         }
 
         if (policy.term) {
