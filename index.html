@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang=en>
+<head>
+
+    <meta charset=utf-8>
+    <title>Actuarial Notation Playground</title>
+    <meta name=description content="A small app to help acturial students
+            practice with the notation.">
+    <meta name=author content="Shrikant Sharat Kandula">
+
+    <meta name=viewport
+            content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel=stylesheet href=css/app.css>
+    <link rel=stylesheet href=css/base.css>
+    <link rel=stylesheet href=css/skeleton.css>
+    <link rel=stylesheet href=css/layout.css>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<body>
+
+    <header class=container>
+        <h2 class=remove-bottom>
+            Acturial Notation Playground
+        </h2>
+        <hr>
+    </header>
+
+    <div class="sixteen columns container">
+
+        <div class="eight columns alpha">
+            <form id=policy-form name=policy-form>
+
+                <fieldset>
+                    <legend>Age details</legend>
+                    <label>
+                        <span>Policy issued at age</span>
+                        <input type=number id=issue-age required value=25>
+                    </label>
+                    <label>
+                        <span>Years since policy issue (leave blank if not
+                            considering select period)</span>
+                        <input type=number id=select-period>
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Payments made</legend>
+                    <label>
+                        <input id=is-assurance type=checkbox checked>
+                        <span>Assurance</span>
+                    </label>
+                    <label>
+                        <input id=is-endowment type=checkbox>
+                        <span>Endowment</span>
+                    </label>
+                </fieldset>
+
+                <label>
+                    Term (leave blank if not temporary)
+                    <input type=number id=term-input value=30>
+                </label>
+
+                <fieldset>
+                    <legend>Payment particulars</legend>
+                    <label>
+                        <input id=is-annuity type=checkbox>
+                        <span>Annual payments (as opposed to single benefit
+                            payment)</span>
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Payment relative to status expiry</legend>
+                    <label>
+                        <input name=timing-input type=radio value=immediate>
+                        <span>Immediately on expiry</span>
+                    </label>
+                    <label>
+                        <input name=timing-input type=radio value=end-of-year
+                                checked>
+                        <span>End of year in which the status expired</span>
+                    </label>
+                </fieldset>
+
+                <label>
+                    Deferred for
+                    <input type=number id=defer-input value=1>
+                </label>
+
+                <input type=submit value="Describe Policy">
+
+            </form>
+
+        </div>
+
+        <div class="eight columns omega">
+            <p id=policy-desc></p>
+            <div id=notation-display>$$.$$</div>
+        </div>
+
+    </div>
+
+    <script type=text/x-template id=policy-desc-template>
+        An
+        <% if (isEndowment) { %> endowment <% } %>
+        <% if (isAssurance) { %> assurance <% } %>
+        policy issued at age <%= issueAge %>.
+    </script>
+
+    <script type=text/x-mathjax-config>
+        MathJax.Hub.Config({
+            TeX: {
+                extensions: ['enclose.js']
+            }
+        });
+    </script>
+
+    <script async src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src=lib/jquery-1.8.3.min.js></script>
+    <script src=lib/underscore-min.js></script>
+    <script src=js/main.js></script>
