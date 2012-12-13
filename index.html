@@ -110,7 +110,13 @@
         <%= term ? 'a term' : 'an' %>
         <% if (isEndowment) { %> endowment <% } %>
         <% if (isAssurance) { %> assurance <% } %>
-        policy issued to an individual at age
+        policy with a benefit of 1,
+        <% if (timing === 'immediate') { %>
+            paid immediately after death,
+        <% } else { %>
+            paid at the end of the year of death,
+        <% } %>
+        issued to an individual at age
         <%= issueAge %><%
         if (!isNaN(selectPeriod)) { %>,
             whose present age is <%= selectPeriod == 0 ? 'also' : '' %>
