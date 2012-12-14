@@ -108,6 +108,17 @@ jQuery(function ($) {
 
     });
 
+    $('#about-btn').click(function (e) {
+        e.preventDefault();
+        $('#about-box').parent().show();
+    });
+
+    $('.mask').click('click', function (e) {
+        if (e.target === e.currentTarget) {
+            $(this).hide();
+        }
+    });
+
     setTimeout(describePolicy, 1000);
 
 });
